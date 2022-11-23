@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ChatVC.swift
 //  MyChatApp
 //
 //  Created by Никита Швец on 23.11.2022.
@@ -7,13 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ChatVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+ 
     }
+    
 
 
 }
-
