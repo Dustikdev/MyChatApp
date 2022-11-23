@@ -8,10 +8,16 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
+    
+    let emailTextField = UITextField()
+    let passwordTextField = UITextField()
+    let registerLabel = UILabel()
+    let errorLabel = UILabel()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureLoginVCUI()
 
     }
     

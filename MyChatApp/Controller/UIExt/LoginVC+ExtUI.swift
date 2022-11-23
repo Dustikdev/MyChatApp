@@ -1,5 +1,5 @@
 //
-//  RegisterVC+ExtUI.swift
+//  ChatVC+ExtUI.swift
 //  MyChatApp
 //
 //  Created by Никита Швец on 23.11.2022.
@@ -7,11 +7,10 @@
 
 import UIKit
 
-
-extension RegisterVC {
+extension LoginVC {
     
-    func configureRegisterVCUI() {
-        view.backgroundColor = UIColor(named: "BrandLightBlue")
+    func configureLoginVCUI() {
+        view.backgroundColor = UIColor(named: "BrandBlue")
         configureEmailTextField()
         configurePasswordTextField()
         configureRegisterLabel()
@@ -21,11 +20,12 @@ extension RegisterVC {
     func configureEmailTextField() {
         view.addSubview(emailTextField)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.placeholder = "Email"
+        emailTextField.placeholder = "1@2.com"
+        emailTextField.attributedPlaceholder = NSAttributedString(string: emailTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemBlue])
         emailTextField.layer.cornerRadius = 25
         emailTextField.backgroundColor = .white
         emailTextField.textAlignment = .center
-        emailTextField.textColor = .systemGray3
+        emailTextField.textColor = .systemBlue
         NSLayoutConstraint.activate([
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
             emailTextField.widthAnchor.constraint(equalToConstant: 300),
@@ -38,11 +38,12 @@ extension RegisterVC {
     func configurePasswordTextField() {
         view.addSubview(passwordTextField)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = "123456"
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemBlue])
         passwordTextField.layer.cornerRadius = 25
         passwordTextField.backgroundColor = .white
         passwordTextField.textAlignment = .center
-        passwordTextField.textColor = .systemGray3
+        passwordTextField.textColor = .systemBlue
         NSLayoutConstraint.activate([
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
             passwordTextField.widthAnchor.constraint(equalToConstant: 300),
@@ -54,9 +55,9 @@ extension RegisterVC {
     func configureRegisterLabel() {
         view.addSubview(registerLabel)
         registerLabel.translatesAutoresizingMaskIntoConstraints = false
-        registerLabel.text = "Register"
+        registerLabel.text = "Log In"
         registerLabel.font = .systemFont(ofSize: 25, weight: .regular)
-        registerLabel.textColor = .systemBlue
+        registerLabel.textColor = .white
         NSLayoutConstraint.activate([
             registerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             registerLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30)
@@ -68,7 +69,7 @@ extension RegisterVC {
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.text = "Error"
         errorLabel.font = .systemFont(ofSize: 25, weight: .regular)
-        errorLabel.textColor = .black
+        errorLabel.textColor = .white
         NSLayoutConstraint.activate([
             errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             errorLabel.topAnchor.constraint(equalTo: registerLabel.bottomAnchor, constant: 30)

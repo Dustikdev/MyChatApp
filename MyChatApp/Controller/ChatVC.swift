@@ -8,10 +8,15 @@
 import UIKit
 
 class ChatVC: UIViewController {
+    
+    let chatTableView = UITableView()
+    let chatTextField = UITextField()
+    let sendButton = UIButton()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureChatVCUI()
  
     }
     
