@@ -14,7 +14,6 @@ extension WelcomeVC {
         configureChatNameLabel()
         configureLoginButton()
         configureRegisterButton()
-
     }
     
     func configureChatNameLabel() {
@@ -32,6 +31,7 @@ extension WelcomeVC {
     
     func configureLoginButton() {
         view.addSubview(loginButton)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = .systemGreen
         loginButton.setTitle("Log in", for: .normal)

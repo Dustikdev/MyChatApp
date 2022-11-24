@@ -24,8 +24,8 @@ extension ChatVC {
         NSLayoutConstraint.activate([
             sendButton.heightAnchor.constraint(equalToConstant: 44),
             sendButton.widthAnchor.constraint(equalToConstant: 44),
-            sendButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            sendButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
         ])
     }
     
@@ -36,11 +36,10 @@ extension ChatVC {
         chatTextField.layer.cornerRadius = 8
         chatTextField.backgroundColor = .white
         chatTextField.textAlignment = .left
-        chatTextField.textColor = .systemBlue
         chatTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 10)
         NSLayoutConstraint.activate([
             chatTextField.heightAnchor.constraint(equalToConstant: 44),
-            chatTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            chatTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             chatTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             chatTextField.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -10)
         ])
@@ -51,7 +50,7 @@ extension ChatVC {
         chatTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             chatTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            chatTableView.bottomAnchor.constraint(equalTo: chatTextField.topAnchor, constant: -30),
+            chatTableView.bottomAnchor.constraint(equalTo: chatTextField.topAnchor, constant: -10),
             chatTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             chatTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])

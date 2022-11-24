@@ -19,6 +19,9 @@ class WelcomeVC: UIViewController {
         configureWelcomeVCUI()
     }
     
-
+    @objc private func loginButtonTapped() {
+        let vc = LoginVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
