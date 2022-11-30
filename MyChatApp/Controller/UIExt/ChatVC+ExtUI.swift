@@ -14,6 +14,7 @@ extension ChatVC {
         configureSendButton()
         configureChatTextField()
         configureChatTableView()
+        configureNavigationBar()
     }
     
     func configureSendButton() {
@@ -54,5 +55,10 @@ extension ChatVC {
             chatTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             chatTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    
+    func configureNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOutTapped))
+        navigationItem.setHidesBackButton(true, animated: true)
     }
 }

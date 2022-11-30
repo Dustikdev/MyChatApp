@@ -19,7 +19,7 @@ extension WelcomeVC {
     func configureChatNameLabel() {
         view.addSubview(chatNameLabel)
         chatNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        chatNameLabel.text = "MyChat"
+        chatNameLabel.text = ""
         chatNameLabel.textColor = .systemRed
         chatNameLabel.font = .systemFont(ofSize: 50, weight: .heavy)
         chatNameLabel.textColor = .systemBlue
@@ -46,6 +46,7 @@ extension WelcomeVC {
     
     func configureRegisterButton() {
         view.addSubview(registerButton)
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         registerButton.backgroundColor = .systemBlue
         registerButton.alpha = 0.5

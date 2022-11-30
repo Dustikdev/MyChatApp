@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatVC: UIViewController {
     
@@ -19,7 +20,16 @@ class ChatVC: UIViewController {
         configureChatVCUI()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+    }
+    
+    @objc func logOutTapped() {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+        }
+        navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

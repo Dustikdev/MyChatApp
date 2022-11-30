@@ -13,19 +13,24 @@ extension LoginVC {
         view.backgroundColor = UIColor(named: "BrandBlue")
         configureEmailTextField()
         configurePasswordTextField()
-        configureRegisterLabel()
+        configureloginButton()
         configureErrorLabel()
     }
     
     func configureEmailTextField() {
         view.addSubview(emailTextField)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.placeholder = "1@2.com"
-        emailTextField.attributedPlaceholder = NSAttributedString(string: emailTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemBlue])
+        emailTextField.placeholder = "Login"
+        emailTextField.attributedPlaceholder = NSAttributedString(string: emailTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         emailTextField.layer.cornerRadius = 25
+        emailTextField.keyboardType = .emailAddress
         emailTextField.backgroundColor = .white
         emailTextField.textAlignment = .center
         emailTextField.textColor = .systemBlue
+        emailTextField.layer.shadowRadius = 5
+        emailTextField.layer.shadowOpacity = 1
+        emailTextField.layer.shadowColor = UIColor.systemGray2.cgColor
+        emailTextField.layer.shadowOffset = CGSize(width: -10.0, height: 10.0)
         NSLayoutConstraint.activate([
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
             emailTextField.widthAnchor.constraint(equalToConstant: 300),
@@ -38,12 +43,17 @@ extension LoginVC {
     func configurePasswordTextField() {
         view.addSubview(passwordTextField)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "123456"
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemBlue])
+        passwordTextField.placeholder = "Password"
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         passwordTextField.layer.cornerRadius = 25
         passwordTextField.backgroundColor = .white
         passwordTextField.textAlignment = .center
         passwordTextField.textColor = .systemBlue
+        passwordTextField.layer.shadowRadius = 5
+        passwordTextField.layer.shadowOpacity = 1
+        passwordTextField.layer.shadowColor = UIColor.systemGray2.cgColor
+        passwordTextField.layer.shadowOffset = CGSize(width: -10.0, height: 10.0)
+        passwordTextField.isSecureTextEntry = true
         NSLayoutConstraint.activate([
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
             passwordTextField.widthAnchor.constraint(equalToConstant: 300),
@@ -52,27 +62,29 @@ extension LoginVC {
         ])
     }
     
-    func configureRegisterLabel() {
-        view.addSubview(registerLabel)
-        registerLabel.translatesAutoresizingMaskIntoConstraints = false
-        registerLabel.text = "Log In"
-        registerLabel.font = .systemFont(ofSize: 25, weight: .regular)
-        registerLabel.textColor = .white
+    func configureloginButton() {
+        view.addSubview(loginButton)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.setTitle("Log In", for: .normal)
+        loginButton.titleLabel?.font = .systemFont(ofSize: 25, weight: .regular)
+        loginButton.setTitleColor(.white, for: .normal)
         NSLayoutConstraint.activate([
-            registerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            registerLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30)
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30)
         ])
     }
     
     func configureErrorLabel() {
         view.addSubview(errorLabel)
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        errorLabel.text = "Error"
-        errorLabel.font = .systemFont(ofSize: 25, weight: .regular)
-        errorLabel.textColor = .white
+        errorLabel.text = ""
+        errorLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        errorLabel.textColor = .systemGray3
+        errorLabel.numberOfLines = 0
         NSLayoutConstraint.activate([
             errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            errorLabel.topAnchor.constraint(equalTo: registerLabel.bottomAnchor, constant: 30)
+            errorLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30)
         ])
     }
 }
