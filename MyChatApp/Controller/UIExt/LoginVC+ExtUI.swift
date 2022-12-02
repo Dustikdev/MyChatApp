@@ -21,6 +21,7 @@ extension LoginVC {
         view.addSubview(emailTextField)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.placeholder = "Login"
+        emailTextField.text = "Q@q.ru" //for tests
         emailTextField.attributedPlaceholder = NSAttributedString(string: emailTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         emailTextField.layer.cornerRadius = 25
         emailTextField.keyboardType = .emailAddress
@@ -44,6 +45,7 @@ extension LoginVC {
         view.addSubview(passwordTextField)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Password"
+        passwordTextField.text = "123456" //for tests
         passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         passwordTextField.layer.cornerRadius = 25
         passwordTextField.backgroundColor = .white

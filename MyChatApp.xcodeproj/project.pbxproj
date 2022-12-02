@@ -10,6 +10,10 @@
 		7910F29A29313320008E75C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7910F29929313320008E75C3 /* GoogleService-Info.plist */; };
 		7910F29D293133F3008E75C3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7910F29C293133F3008E75C3 /* FirebaseAuth */; };
 		7910F29F293133F3008E75C3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7910F29E293133F3008E75C3 /* FirebaseFirestore */; };
+		7910F2A129392F84008E75C3 /* IngoingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910F2A029392F84008E75C3 /* IngoingMessageCell.swift */; };
+		7910F2A3293939BC008E75C3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910F2A2293939BC008E75C3 /* Message.swift */; };
+		7910F2A629393D02008E75C3 /* OutgoingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910F2A529393D02008E75C3 /* OutgoingMessageCell.swift */; };
+		7910F2AA293A6A36008E75C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910F2A9293A6A36008E75C3 /* Constants.swift */; };
 		79DA49E0292EB62300A43627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA49DF292EB62300A43627 /* AppDelegate.swift */; };
 		79DA49E2292EB62300A43627 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA49E1292EB62300A43627 /* SceneDelegate.swift */; };
 		79DA49E9292EB62400A43627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79DA49E8292EB62400A43627 /* Assets.xcassets */; };
@@ -26,6 +30,10 @@
 
 /* Begin PBXFileReference section */
 		7910F29929313320008E75C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7910F2A029392F84008E75C3 /* IngoingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngoingMessageCell.swift; sourceTree = "<group>"; };
+		7910F2A2293939BC008E75C3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		7910F2A529393D02008E75C3 /* OutgoingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessageCell.swift; sourceTree = "<group>"; };
+		7910F2A9293A6A36008E75C3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		79DA49DC292EB62300A43627 /* MyChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DA49DF292EB62300A43627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79DA49E1292EB62300A43627 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7910F2A429393CCD008E75C3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7910F2A029392F84008E75C3 /* IngoingMessageCell.swift */,
+				7910F2A529393D02008E75C3 /* OutgoingMessageCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		79DA49D3292EB62300A43627 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +93,7 @@
 			children = (
 				79DA49DF292EB62300A43627 /* AppDelegate.swift */,
 				79DA49E1292EB62300A43627 /* SceneDelegate.swift */,
+				7910F2A9293A6A36008E75C3 /* Constants.swift */,
 				79DA49F6292EB69D00A43627 /* Controller */,
 				79DA49F5292EB69600A43627 /* Model */,
 				79DA49E8292EB62400A43627 /* Assets.xcassets */,
@@ -89,6 +107,7 @@
 		79DA49F5292EB69600A43627 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7910F2A2293939BC008E75C3 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +120,7 @@
 				79DA49F9292EB6C600A43627 /* LoginVC.swift */,
 				79DA49FC292EB6DA00A43627 /* ChatVC.swift */,
 				79DA49FE292EB7C700A43627 /* UIExt */,
+				7910F2A429393CCD008E75C3 /* Cells */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -200,8 +220,12 @@
 				79DA49F4292EB67600A43627 /* WelcomeVC.swift in Sources */,
 				79DA4A07292ED25100A43627 /* ChatVC+ExtUI.swift in Sources */,
 				79DA49F8292EB6B800A43627 /* RegisterVC.swift in Sources */,
+				7910F2A129392F84008E75C3 /* IngoingMessageCell.swift in Sources */,
 				79DA49E0292EB62300A43627 /* AppDelegate.swift in Sources */,
 				79DA49E2292EB62300A43627 /* SceneDelegate.swift in Sources */,
+				7910F2A629393D02008E75C3 /* OutgoingMessageCell.swift in Sources */,
+				7910F2A3293939BC008E75C3 /* Message.swift in Sources */,
+				7910F2AA293A6A36008E75C3 /* Constants.swift in Sources */,
 				79DA49FA292EB6C600A43627 /* LoginVC.swift in Sources */,
 				79DA4A05292ECCA400A43627 /* LoginVC+ExtUI.swift in Sources */,
 			);
