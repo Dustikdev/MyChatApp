@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseCore
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
         FirebaseApp.configure()
+        let db = Firestore.firestore()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

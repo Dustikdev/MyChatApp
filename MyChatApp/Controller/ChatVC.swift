@@ -13,38 +13,45 @@ class ChatVC: UIViewController {
     let chatTableView = UITableView()
     let chatTextField = UITextField()
     let sendButton = UIButton()
+    let db = Firestore.firestore()
     
-    var messages: [Message] = [
-        Message(sender: "1@2.com", body: "hey", direction: .ingoing),
-        Message(sender: "1@3.com", body: "hello", direction: .outgoing),
-        Message(sender: "1@2.com", body: "bye", direction: .ingoing)
-    ]
+    var messages: [Message] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureChatVCUI()
-        chatTableView.allowsSelection = false
-        chatTableView.register(IngoingMessageCell.self, forCellReuseIdentifier: Constants.IngoingMessageCell)
-        chatTableView.register(OutgoingMessageCell.self, forCellReuseIdentifier: Constants.OutgoingMessageCell)
+        chatTableView.register(IngoingMessageCell.self, forCellReuseIdentifier: Constants.CellIdentificators.IngoingMessageCell)
+        chatTableView.register(OutgoingMessageCell.self, forCellReuseIdentifier: Constants.CellIdentificators.OutgoingMessageCell)
         chatTableView.dataSource = self
+        chatTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        loadMessages()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+    func loadMessages() {
+        db.collection("messages").order(by: "time").addSnapshotListener { querySnapshot, error in
+            self.messages = []
+            if let err = error {
+                print(err)
+            }
+            else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for doc in snapshotDocuments {
+                        let data = doc.data()
+                        if let mesageBody = data["body"] as? String, let messageSender = data["sender"] as? String {
+                            let newMessage = Message(sender: messageSender, body: mesageBody, direction: .ingoing)
+//                            print(newMessage)
+                            self.messages.append(newMessage)
+                            DispatchQueue.main.async {
+                                self.chatTableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @objc func logOutTapped() {
@@ -56,6 +63,24 @@ class ChatVC: UIViewController {
           print("Error signing out: %@", signOutError)
         }
         
+    }
+    
+    @objc func sendButtonTapped() {
+        if let messageBody = chatTextField.text, let sender = Auth.auth().currentUser?.email {
+            db.collection("messages").addDocument(data:[
+                                                    "sender" : sender,
+                                                    "body": messageBody,
+                                                    "time": Date().timeIntervalSince1970
+                                                    ])
+            { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added successfully")
+                    self.chatTextField.endEditing(true)
+                }
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -76,8 +101,9 @@ class ChatVC: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
-    
 }
+
+//MARK: - UITableViewDataSource
 
 extension ChatVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,19 +113,21 @@ extension ChatVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch messages[indexPath.row].direction {
         case .ingoing:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.IngoingMessageCell) as! IngoingMessageCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentificators.IngoingMessageCell) as! IngoingMessageCell
             cell.messageLabel.text = messages[indexPath.row].body
-//            cell.senderLabel.text = messages[indexPath.row].sender
             return cell
         case .outgoing:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.IngoingMessageCell) as! OutgoingMessageCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentificators.OutgoingMessageCell) as! OutgoingMessageCell
             cell.messageLabel.text = messages[indexPath.row].body
-//            cell.senderLabel.text = messages[indexPath.row].sender
             return cell
         }
-
     }
-    
-    
-    
+}
+
+extension ChatVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        sendButtonTapped()
+        textField.endEditing(true)
+        return true
+    }
 }

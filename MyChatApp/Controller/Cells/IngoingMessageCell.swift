@@ -15,7 +15,7 @@ class IngoingMessageCell: UITableViewCell {
     let stackView = UIStackView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: Constants.IngoingMessageCell)
+        super.init(style: style, reuseIdentifier: Constants.CellIdentificators.IngoingMessageCell)
         configureIngoingMessageCellUI()
     }
     
@@ -40,7 +40,7 @@ extension IngoingMessageCell {
     }
     
     func configureMessageView() {
-        messageView.backgroundColor = UIColor(named: "BrandPurple")
+        messageView.backgroundColor = UIColor(named: Constants.Colors.brandPurple)
     }
     
     func configureMessageLabel() {
@@ -49,7 +49,7 @@ extension IngoingMessageCell {
         messageLabel.text = "aaaaaaaaaaaqqqqqqqqqqqqqqiuiuiuiuiuiuiuiuiuiuiu"
         messageLabel.textAlignment = .left
         messageLabel.font = .systemFont(ofSize: 15, weight: .regular)
-        messageLabel.textColor = UIColor(named: "BrandLightBlue")
+        messageLabel.textColor = UIColor(named: Constants.Colors.brandLightBlue)
         messageLabel.numberOfLines = 0
         NSLayoutConstraint.activate([
             messageLabel.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: 10),
@@ -60,7 +60,7 @@ extension IngoingMessageCell {
     }
     
     func configureAvatarImageView() {
-        avatarImageView.image = UIImage(named: "YouAvatar")
+        avatarImageView.image = UIImage(named: Constants.Images.youAvatar)
         avatarImageView.clipsToBounds = true
         NSLayoutConstraint.activate([
             avatarImageView.heightAnchor.constraint(equalToConstant: 40),

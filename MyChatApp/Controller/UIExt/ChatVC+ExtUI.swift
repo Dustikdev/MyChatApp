@@ -10,7 +10,7 @@ import UIKit
 extension ChatVC {
     
     func configureChatVCUI() {
-        view.backgroundColor = UIColor(named: "BrandPurple")
+        view.backgroundColor = UIColor(named: Constants.Colors.brandPurple)
         configureSendButton()
         configureChatTextField()
         configureChatTableView()
@@ -19,6 +19,7 @@ extension ChatVC {
     
     func configureSendButton() {
         view.addSubview(sendButton)
+        sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.tintColor = .white
         sendButton.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
@@ -48,6 +49,7 @@ extension ChatVC {
     
     func configureChatTableView() {
         view.addSubview(chatTableView)
+        chatTableView.allowsSelection = false
         chatTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             chatTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

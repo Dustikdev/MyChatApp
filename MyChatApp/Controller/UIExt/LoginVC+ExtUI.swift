@@ -10,7 +10,7 @@ import UIKit
 extension LoginVC {
     
     func configureLoginVCUI() {
-        view.backgroundColor = UIColor(named: "BrandBlue")
+        view.backgroundColor = UIColor(named: Constants.Colors.brandBlue)
         configureEmailTextField()
         configurePasswordTextField()
         configureloginButton()

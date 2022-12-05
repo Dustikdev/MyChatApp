@@ -11,7 +11,7 @@ import UIKit
 extension RegisterVC {
     
     func configureRegisterVCUI() {
-        view.backgroundColor = UIColor(named: "BrandLightBlue")
+        view.backgroundColor = UIColor(named: Constants.Colors.brandLightBlue)
         configureEmailTextField()
         configurePasswordTextField()
         configureRegisterButton()

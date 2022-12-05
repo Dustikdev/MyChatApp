@@ -8,8 +8,20 @@
 import Foundation
 
 enum Constants {
-    static let IngoingMessageCell = "IngoingMessageCell"
-    static let OutgoingMessageCell = "OutgoingMessageCell"
+    enum CellIdentificators {
+        static let IngoingMessageCell = "IngoingMessageCell"
+        static let OutgoingMessageCell = "OutgoingMessageCell"
+    }
+    enum Colors {
+        static let brandBlue = "BrandBlue"
+        static let brandLightBlue = "BrandLightBlue"
+        static let brandLightPurple = "BrandLightPurple"
+        static let brandPurple = "BrandPurple"
+    }
+    enum Images {
+        static let meAvatar = "MeAvatar"
+        static let youAvatar = "YouAvatar"
+    }
 }
 
 
