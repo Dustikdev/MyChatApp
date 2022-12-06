@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     enum CellIdentificators {
-        static let IngoingMessageCell = "IngoingMessageCell"
+        static let MessageCell = "MessageCell"
         static let OutgoingMessageCell = "OutgoingMessageCell"
     }
     enum Colors {
