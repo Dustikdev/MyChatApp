@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 extension ChatVC {
     
@@ -78,5 +79,7 @@ extension ChatVC {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOutTapped))
         navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.navigationBar.barTintColor = UIColor(named: Constants.Colors.brandLightBlue)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationItem.title = "MyChat"
     }
 }

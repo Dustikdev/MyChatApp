@@ -29,12 +29,10 @@ class ChatVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         loadMessages()
-//        print(messages)
-        
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
     }
@@ -51,7 +49,6 @@ class ChatVC: UIViewController {
                         let data = doc.data()
                         if let mesageBody = data["body"] as? String, let messageSender = data["sender"] as? String {
                             let newMessage = Message(sender: messageSender, body: mesageBody)
-//                            print(newMessage)
                             self.messages.append(newMessage)
                             DispatchQueue.main.async {
                                 self.chatTableView.reloadData()
@@ -87,8 +84,9 @@ class ChatVC: UIViewController {
                         print("Error adding document: \(err)")
                     } else {
                         print("Document added successfully")
-//                        self.chatTextField.endEditing(true)
-                        self.chatTextField.text = ""
+                        DispatchQueue.main.async {
+                            self.chatTextField.text = ""
+                        }
                     }
                 }
             }
@@ -99,8 +97,6 @@ class ChatVC: UIViewController {
         addToFirebase()
         scrollTableViewToBottom()
     }
-    
-
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -126,7 +122,7 @@ class ChatVC: UIViewController {
     func scrollTableViewToBottom() {
         if messages.count > 0 {
             let last = IndexPath(row: messages.count - 1, section: 0)
-            chatTableView.scrollToRow(at: last, at: .bottom, animated: true)
+            chatTableView.scrollToRow(at: last, at: .bottom, animated: false)
         }
     }
 
@@ -166,7 +162,6 @@ extension ChatVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         addToFirebase()
         scrollTableViewToBottom()
-//        textField.endEditing(true)
         textField.text = ""
         return true
     }

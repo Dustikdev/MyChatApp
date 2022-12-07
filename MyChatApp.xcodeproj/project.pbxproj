@@ -32,6 +32,7 @@
 		7910F2A029392F84008E75C3 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		7910F2A2293939BC008E75C3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7910F2A9293A6A36008E75C3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7910F2AF2940D5F4008E75C3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		79DA49DC292EB62300A43627 /* MyChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DA49DF292EB62300A43627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79DA49E1292EB62300A43627 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		79DA49D3292EB62300A43627 = {
 			isa = PBXGroup;
 			children = (
+				7910F2AF2940D5F4008E75C3 /* README.md */,
 				79DA49DE292EB62300A43627 /* MyChatApp */,
 				79DA49DD292EB62300A43627 /* Products */,
 			);
